@@ -1,4 +1,8 @@
 class Pessoa:
+    # Atributos de classe
+    olhos = 2
+
+    # Atributos de instância
     def __init__(self, *filhos, nome: str = None, idade: int = 0):
         self.nome = nome
         self.idade = idade

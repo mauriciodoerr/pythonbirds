@@ -90,6 +90,8 @@ O   L
 
 
 class Motor:
+    velocidade = 0
+
     def __init__(self):
         self.velocidade = 0
 
@@ -108,6 +110,7 @@ OESTE = 'Oeste'
 
 
 class Direcao:
+    valor = NORTE
     bussola = [NORTE, LESTE, SUL, OESTE]
 
     def __init__(self):
@@ -136,10 +139,22 @@ class Carro:
         self.motor = motor
 
     def calcular_velocidade(self):
-        pass
+        return self.motor.velocidade
+
+    def acelerar(self):
+        self.motor.acelerar()
+
+    def frear(self):
+        self.motor.frear()
 
     def calcular_direcao(self):
-        pass
+        return self.direcao.valor
+
+    def girar_a_direita(self):
+        self.direcao.girar_a_direita()
+
+    def girar_a_esquerda(self):
+        self.direcao.girar_a_esquerda()
 
 
 if __name__ == '__main__':

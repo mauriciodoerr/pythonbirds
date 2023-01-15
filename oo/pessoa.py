@@ -22,3 +22,12 @@ if __name__ == '__main__':
 
     for filho in p4.filhos:
         print(filho.nome)
+
+    # Criando atributo dinâmico
+    p.sobrenome = 'Sobrenome'
+    print(p.__dict__)
+    print(p2.__dict__)
+
+    # Removendo atributo dinâmico
+    del p.sobrenome
+    print(p.__dict__)

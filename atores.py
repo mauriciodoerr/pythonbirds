@@ -38,7 +38,7 @@ class Ator():
         :param tempo: o tempo do jogo
         :return: posição x, y do ator
         """
-        return 1, 1
+        return self.x, self.y
 
     def colidir(self, outro_ator, intervalo=1):
         """
@@ -52,16 +52,19 @@ class Ator():
         :param intervalo: Intervalo a ser considerado
         :return:
         """
-        pass
-
-
+        if self.status != DESTRUIDO and outro_ator.status != DESTRUIDO:
+            self._caracter_ativo = ' '
+            self.status = outro_ator.status = DESTRUIDO
 
 class Obstaculo(Ator):
-    pass
+    _caracter_ativo = 'O'
 
 
 class Porco(Ator):
-    pass
+    _caracter_ativo = '@'
+
+    def colidir(self, outro_ator, intervalo=1):
+        self._caracter_ativo = '+'
 
 
 class DuploLancamentoExcecao(Exception):
@@ -119,7 +122,6 @@ class Passaro(Ator):
         """
         return 1, 1
 
-
     def lancar(self, angulo, tempo_de_lancamento):
         """
         Lógica que lança o pássaro. Deve armazenar o ângulo e o tempo de lançamento para posteriores cálculo.
@@ -133,8 +135,12 @@ class Passaro(Ator):
 
 
 class PassaroAmarelo(Passaro):
-    pass
+    def colidir(self, outro_ator, intervalo=1):
+        self._caracter_ativo = 'a'
 
 
 class PassaroVermelho(Passaro):
-    pass
+    _caracter_ativo = 'V'
+
+    def colidir(self, outro_ator, intervalo=1):
+        self._caracter_ativo = 'v'
